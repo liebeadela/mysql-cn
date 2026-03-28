@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗夜塔罗 | Dark Tarot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 标题区 -->
+        <header class="header">
+            <h1 class="title">暗夜塔罗</h1>
+            <p class="subtitle">探索命运的深处</p>
+        </header>
+
+        <!-- 选择占卜类别 -->
+        <section class="category-selection" id="categorySelection">
+            <h2>今日占卜 · 聚焦何方？</h2>
+            <div class="category-options">
+                <div class="category-card" onclick="selectCategory('career')">
+                    <div class="category-icon">⚔</div>
+                    <h3>事业 · 工作</h3>
+                    <p>职业发展、职场关系、创业方向</p>
+                </div>
+                <div class="category-card" onclick="selectCategory('love')">
+                    <div class="category-icon">♥</div>
+                    <h3>爱情 · 情感</h3>
+                    <p>感情走向、姻缘机遇、两人关系</p>
+                </div>
+                <div class="category-card" onclick="selectCategory('study')">
+                    <div class="category-icon">📚</div>
+                    <h3>学习 · 考试</h3>
+                    <p>学业方向、考试运势、成长规划</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 输入困惑 -->
+        <section class="intention-section" id="intentionSection" style="display: none;">
+            <h2>请写下你最近的困惑</h2>
+            <div class="category-tag" id="intentionTag">
+                <span class="tag-icon"></span>
+                <span class="tag-text"></span>
+            </div>
+            <div class="breathing-guide">
+                <div class="breathing-circle">
+                    <span class="breathing-text">请专注于呼吸</span>
+                </div>
+            </div>
+            <textarea class="confusion-input" id="confusionInput" placeholder="在此写下你心中的困惑..."></textarea>
+            <button class="btn-continue" onclick="continueToSpread()">继续</button>
+            <button class="btn-back" onclick="backToCategory()">← 返回</button>
+        </section>
+
+        <!-- 选择牌阵 -->
+        <section class="spread-selection" id="spreadSelection" style="display: none;">
+            <h2>选择你的占卜方式</h2>
+            <div class="category-tag" id="categoryTag">
+                <span class="tag-icon"></span>
+                <span class="tag-text"></span>
+            </div>
+            <div class="spread-options">
+                <div class="spread-card" onclick="selectSpread('single')">
+                    <div class="spread-icon">✧</div>
+                    <h3>单牌指引</h3>
+                    <p>快速洞察当下</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('three')">
+                    <div class="spread-icon">✧ ✧ ✧</div>
+                    <h3>三牌阵</h3>
+                    <p>过去 · 现在 · 未来</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('celtic')">
+                    <div class="spread-icon">✧✧✧✧✧</div>
+                    <h3>凯尔特十字</h3>
+                    <p>深度命运解析</p>
+                </div>
+            </div>
+            <button class="btn-back" onclick="backToIntention()">← 返回</button>
+        </section>
+
+        <!-- 抽牌区 -->
+        <section class="reading-area" id="readingArea" style="display: none;">
+            <h2 id="readingTitle">点击选择你的牌</h2>
+            <div class="deck-container" id="deckContainer">
+            </div>
+            <button class="btn-restart" onclick="restart()">重新开始</button>
+        </section>
+
+        <!-- 结果展示 -->
+        <section class="result-area" id="resultArea" style="display: none;">
+            <h2>你的牌面</h2>
+            <div class="cards-display" id="cardsDisplay"></div>
+            <div class="interpretation" id="interpretation"></div>
+            <div class="result-buttons">
+                <button class="btn-action" onclick="shareReading()">📤 分享结果</button>
+                <button class="btn-action" onclick="saveReading()">💾 保存记录</button>
+            </div>
+            <button class="btn-restart" onclick="restart()">再占一次</button>
+        </section>
+    </div>
+
+    <!-- 烛光效果 -->
+    <div class="candle-glow"></div>
+
+    <script src="tarot-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
